@@ -1,0 +1,220 @@
+{
+  "runId": "c138bd49-69a0-4ee6-94cd-74c230058ddf",
+  "architecture": "langchain",
+  "mode": "mock",
+  "model": "scripted-offline",
+  "startedAt": "2026-10-22T03:35:43.146Z",
+  "finishedAt": "2026-10-22T03:35:43.160Z",
+  "latencyMs": 14.068899999999985,
+  "llmCalls": 0,
+  "simulatedModelCalls": 4,
+  "inputTokens": 0,
+  "outputTokens": 0,
+  "totalTokens": 0,
+  "usageIncomplete": false,
+  "technicalRetries": 0,
+  "llmAttempts": [
+    {
+      "callId": "01a161ad-cf2d-75e8-9d71-ff7c82bafe15",
+      "runId": "c138bd49-69a0-4ee6-94cd-74c230058ddf",
+      "roleOrAgent": "diagnostic_agent",
+      "model": "scripted-offline",
+      "startedAt": "2026-10-22T03:35:43.149Z",
+      "finishedAt": "2026-10-22T03:35:43.149Z",
+      "durationMs": 0,
+      "inputTokens": null,
+      "outputTokens": null,
+      "status": "ok"
+    },
+    {
+      "callId": "01a161ad-cf2f-70a8-81d2-bff98d7383b4",
+      "runId": "c138bd49-69a0-4ee6-94cd-74c230058ddf",
+      "roleOrAgent": "diagnostic_agent",
+      "model": "scripted-offline",
+      "startedAt": "2026-10-22T03:35:43.151Z",
+      "finishedAt": "2026-10-22T03:35:43.151Z",
+      "durationMs": 0,
+      "inputTokens": null,
+      "outputTokens": null,
+      "status": "ok"
+    },
+    {
+      "callId": "01a161ad-cf32-708b-a6d5-f3584a089a3c",
+      "runId": "c138bd49-69a0-4ee6-94cd-74c230058ddf",
+      "roleOrAgent": "analyst_agent",
+      "model": "scripted-offline",
+      "startedAt": "2026-10-22T03:35:43.154Z",
+      "finishedAt": "2026-10-22T03:35:43.154Z",
+      "durationMs": 0,
+      "inputTokens": null,
+      "outputTokens": null,
+      "status": "ok"
+    },
+    {
+      "callId": "01a161ad-cf36-700e-b168-cf86582871de",
+      "runId": "c138bd49-69a0-4ee6-94cd-74c230058ddf",
+      "roleOrAgent": "tutor_agent",
+      "model": "scripted-offline",
+      "startedAt": "2026-10-22T03:35:43.158Z",
+      "finishedAt": "2026-10-22T03:35:43.158Z",
+      "durationMs": 0,
+      "inputTokens": null,
+      "outputTokens": null,
+      "status": "ok"
+    }
+  ],
+  "handoffs": [
+    {
+      "fromAgent": "diagnostic_agent",
+      "toAgent": "analyst_agent",
+      "reason": "Evaluación objetiva con evidencia del historial.",
+      "time": "2026-10-22T03:35:43.152Z",
+      "accepted": true
+    },
+    {
+      "fromAgent": "analyst_agent",
+      "toAgent": "tutor_agent",
+      "reason": "Aplicar intervención adecuada a la evidencia.",
+      "time": "2026-10-22T03:35:43.156Z",
+      "accepted": true
+    }
+  ],
+  "agentTrace": [
+    {
+      "role": "diagnostic_agent",
+      "activation": 1,
+      "time": "2026-10-22T03:35:43.148Z"
+    },
+    {
+      "role": "analyst_agent",
+      "activation": 2,
+      "time": "2026-10-22T03:35:43.153Z"
+    },
+    {
+      "role": "tutor_agent",
+      "activation": 3,
+      "time": "2026-10-22T03:35:43.157Z"
+    }
+  ],
+  "sessionId": "test-session",
+  "scenarioId": "E4",
+  "status": "ok",
+  "result": "INCORRECT",
+  "strategy": "HINT",
+  "pedagogicalDecision": {
+    "strategy": "HINT",
+    "difficulty": "MEDIUM",
+    "justification": "Intervención coherente con la evidencia y las reglas.",
+    "nextRole": "tutor_agent"
+  },
+  "error": null,
+  "response": {
+    "message": "Piensa en la responsabilidad vinculada al valor, no en quién facilita el proceso. Inténtalo otra vez.",
+    "question": {
+      "text": "Dos funcionalidades compiten por prioridad: una es la más solicitada y otra parece aportar más valor. ¿Qué actuación corresponde mejor con Scrum?",
+      "options": {
+        "A": "Implementar siempre la más solicitada.",
+        "B": "El Product Owner evalúa el valor y ordena el Product Backlog.",
+        "C": "El Scrum Master decide unilateralmente la prioridad."
+      },
+      "questionType": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "conceptId": "product-owner",
+      "id": "Q03"
+    },
+    "topics": [],
+    "actions": [
+      {
+        "id": "4",
+        "label": "Necesito una pista"
+      },
+      {
+        "id": "5",
+        "label": "Cambiar de tema"
+      }
+    ]
+  },
+  "stateBefore": {
+    "topicId": "scrum-roles",
+    "conceptId": "product-owner",
+    "consecutiveErrors": 0,
+    "helpLevel": "NONE",
+    "comprehension": "PENDING_VERIFICATION",
+    "history": [
+      {
+        "topicId": "scrum-roles",
+        "conceptId": "product-owner",
+        "questionId": "Q01",
+        "questionType": "INITIAL",
+        "selectedOptionId": "B",
+        "result": "CORRECT",
+        "strategy": "VERIFY",
+        "helpLevel": "NONE"
+      }
+    ],
+    "currentQuestion": {
+      "text": "Dos funcionalidades compiten por prioridad: una es la más solicitada y otra parece aportar más valor. ¿Qué actuación corresponde mejor con Scrum?",
+      "options": {
+        "A": "Implementar siempre la más solicitada.",
+        "B": "El Product Owner evalúa el valor y ordena el Product Backlog.",
+        "C": "El Scrum Master decide unilateralmente la prioridad."
+      },
+      "questionType": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "conceptId": "product-owner",
+      "id": "Q03"
+    }
+  },
+  "stateAfter": {
+    "topicId": "scrum-roles",
+    "conceptId": "product-owner",
+    "consecutiveErrors": 1,
+    "helpLevel": "HINT",
+    "comprehension": "IN_PROGRESS",
+    "history": [
+      {
+        "topicId": "scrum-roles",
+        "conceptId": "product-owner",
+        "questionId": "Q01",
+        "questionType": "INITIAL",
+        "selectedOptionId": "B",
+        "result": "CORRECT",
+        "strategy": "VERIFY",
+        "helpLevel": "NONE"
+      },
+      {
+        "topicId": "scrum-roles",
+        "conceptId": "product-owner",
+        "questionId": "Q03",
+        "questionType": "TRANSFER",
+        "selectedOptionId": "A",
+        "result": "INCORRECT",
+        "strategy": "HINT",
+        "helpLevel": "HINT"
+      }
+    ],
+    "currentQuestion": {
+      "text": "Dos funcionalidades compiten por prioridad: una es la más solicitada y otra parece aportar más valor. ¿Qué actuación corresponde mejor con Scrum?",
+      "options": {
+        "A": "Implementar siempre la más solicitada.",
+        "B": "El Product Owner evalúa el valor y ordena el Product Backlog.",
+        "C": "El Scrum Master decide unilateralmente la prioridad."
+      },
+      "questionType": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "conceptId": "product-owner",
+      "id": "Q03"
+    }
+  },
+  "corpus": {
+    "id": "scrum-poc-provisional-v1",
+    "sha256": "f696c70c4f344a5689e0d3fe0c00f717811a0d6957abde270e5b4a6144e3a46e",
+    "status": "PROVISIONAL_CONTRASTED_NOT_PO_APPROVED"
+  },
+  "effectiveConfig": {},
+  "passedChecks": null,
+  "applicableChecks": 3,
+  "criticalFailures": null,
+  "evaluationStatus": "PENDING_MANUAL_REVIEW",
+  "notes": ""
+}

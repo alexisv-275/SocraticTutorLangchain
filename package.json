@@ -1,0 +1,28 @@
+{
+  "name": "thinkagora-langchain-poc",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "tsx src/cli/demo.ts",
+    "scenarios": "tsx src/cli/scenarios.ts",
+    "test": "tsx --test src/tests/*.test.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@langchain/anthropic": "1.5.13",
+    "@langchain/core": "1.2.20",
+    "@langchain/langgraph": "1.5.2",
+    "dotenv": "18.0.8",
+    "langchain": "1.5.18",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.5",
+    "tsx": "4.23.15",
+    "typescript": "7.0.2"
+  }
+}

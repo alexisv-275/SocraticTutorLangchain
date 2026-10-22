@@ -1,0 +1,97 @@
+{
+  "runId": "1f0e671c-6ed7-456e-999a-e23d50f49d5a",
+  "architecture": "langchain",
+  "mode": "mock",
+  "model": "scripted-offline",
+  "startedAt": "2026-10-22T03:35:43.171Z",
+  "finishedAt": "2026-10-22T03:35:43.177Z",
+  "latencyMs": 6.239900000000034,
+  "llmCalls": 0,
+  "simulatedModelCalls": 1,
+  "inputTokens": 0,
+  "outputTokens": 0,
+  "totalTokens": 0,
+  "usageIncomplete": false,
+  "technicalRetries": 0,
+  "llmAttempts": [
+    {
+      "callId": "01a161ad-cf46-70ee-a509-d83014715ae1",
+      "runId": "1f0e671c-6ed7-456e-999a-e23d50f49d5a",
+      "roleOrAgent": "tutor_agent",
+      "model": "scripted-offline",
+      "startedAt": "2026-10-22T03:35:43.174Z",
+      "finishedAt": "2026-10-22T03:35:43.174Z",
+      "durationMs": 0,
+      "inputTokens": null,
+      "outputTokens": null,
+      "status": "ok"
+    }
+  ],
+  "handoffs": [],
+  "agentTrace": [
+    {
+      "role": "tutor_agent",
+      "activation": 1,
+      "time": "2026-10-22T03:35:43.173Z"
+    }
+  ],
+  "sessionId": "1b288cbd-9269-4f95-968e-c248e2319474",
+  "scenarioId": "START",
+  "status": "ok",
+  "result": "NOT_APPLICABLE",
+  "strategy": "START_TOPIC",
+  "pedagogicalDecision": {
+    "strategy": "START_TOPIC",
+    "difficulty": "LOW",
+    "justification": "Sesión sin tema activo."
+  },
+  "error": null,
+  "response": {
+    "message": "Elige un tema para comenzar.",
+    "question": null,
+    "topics": [
+      {
+        "id": "scrum-roles",
+        "title": "Responsabilidades en Scrum"
+      },
+      {
+        "id": "scrum-events",
+        "title": "Eventos de Scrum"
+      },
+      {
+        "id": "scrum-backlog",
+        "title": "Valor y Product Backlog"
+      }
+    ],
+    "actions": []
+  },
+  "stateBefore": {
+    "topicId": null,
+    "conceptId": null,
+    "consecutiveErrors": 0,
+    "helpLevel": "NONE",
+    "comprehension": "UNASSESSED",
+    "history": [],
+    "currentQuestion": null
+  },
+  "stateAfter": {
+    "topicId": null,
+    "conceptId": null,
+    "consecutiveErrors": 0,
+    "helpLevel": "NONE",
+    "comprehension": "UNASSESSED",
+    "history": [],
+    "currentQuestion": null
+  },
+  "corpus": {
+    "id": "scrum-poc-provisional-v1",
+    "sha256": "f696c70c4f344a5689e0d3fe0c00f717811a0d6957abde270e5b4a6144e3a46e",
+    "status": "PROVISIONAL_CONTRASTED_NOT_PO_APPROVED"
+  },
+  "effectiveConfig": {},
+  "passedChecks": null,
+  "applicableChecks": null,
+  "criticalFailures": null,
+  "evaluationStatus": "PENDING_MANUAL_REVIEW",
+  "notes": ""
+}

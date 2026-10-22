@@ -1,0 +1,184 @@
+{
+  "runId": "f74c43bb-d85b-40c3-95f1-fe503c3a118e",
+  "architecture": "langchain",
+  "mode": "mock",
+  "model": "scripted-offline",
+  "startedAt": "2026-10-22T03:35:43.161Z",
+  "finishedAt": "2026-10-22T03:35:43.170Z",
+  "latencyMs": 8.854100000000017,
+  "llmCalls": 0,
+  "simulatedModelCalls": 2,
+  "inputTokens": 0,
+  "outputTokens": 0,
+  "totalTokens": 0,
+  "usageIncomplete": false,
+  "technicalRetries": 0,
+  "llmAttempts": [
+    {
+      "callId": "01a161ad-cf3c-718a-a3d4-04e5a6397a0e",
+      "runId": "f74c43bb-d85b-40c3-95f1-fe503c3a118e",
+      "roleOrAgent": "analyst_agent",
+      "model": "scripted-offline",
+      "startedAt": "2026-10-22T03:35:43.164Z",
+      "finishedAt": "2026-10-22T03:35:43.164Z",
+      "durationMs": 0,
+      "inputTokens": null,
+      "outputTokens": null,
+      "status": "ok"
+    },
+    {
+      "callId": "01a161ad-cf40-75cb-991d-6beae6063c42",
+      "runId": "f74c43bb-d85b-40c3-95f1-fe503c3a118e",
+      "roleOrAgent": "tutor_agent",
+      "model": "scripted-offline",
+      "startedAt": "2026-10-22T03:35:43.168Z",
+      "finishedAt": "2026-10-22T03:35:43.168Z",
+      "durationMs": 0,
+      "inputTokens": null,
+      "outputTokens": null,
+      "status": "ok"
+    }
+  ],
+  "handoffs": [
+    {
+      "fromAgent": "analyst_agent",
+      "toAgent": "tutor_agent",
+      "reason": "Aplicar intervención adecuada a la evidencia.",
+      "time": "2026-10-22T03:35:43.165Z",
+      "accepted": true
+    }
+  ],
+  "agentTrace": [
+    {
+      "role": "analyst_agent",
+      "activation": 1,
+      "time": "2026-10-22T03:35:43.163Z"
+    },
+    {
+      "role": "tutor_agent",
+      "activation": 2,
+      "time": "2026-10-22T03:35:43.166Z"
+    }
+  ],
+  "sessionId": "test-session",
+  "scenarioId": "E5",
+  "status": "ok",
+  "result": "NOT_APPLICABLE",
+  "strategy": "CHANGE_TOPIC",
+  "pedagogicalDecision": {
+    "strategy": "CHANGE_TOPIC",
+    "difficulty": "LOW",
+    "justification": "Intervención coherente con la evidencia y las reglas.",
+    "nextRole": "tutor_agent"
+  },
+  "error": null,
+  "response": {
+    "message": "Exploremos los eventos de Scrum.",
+    "question": {
+      "text": "Durante el Sprint, Developers necesitan inspeccionar el avance y adaptar su plan. ¿Qué evento les sirve?",
+      "options": {
+        "A": "Sprint Planning.",
+        "B": "Daily Scrum.",
+        "C": "Ningún evento."
+      },
+      "questionType": "INITIAL",
+      "difficulty": "LOW",
+      "conceptId": "daily-scrum",
+      "id": "q-bed72bc1-8707-4e35-a316-0f8bb4891392"
+    },
+    "topics": [],
+    "actions": [
+      {
+        "id": "4",
+        "label": "Necesito una pista"
+      },
+      {
+        "id": "5",
+        "label": "Cambiar de tema"
+      }
+    ]
+  },
+  "stateBefore": {
+    "topicId": "scrum-roles",
+    "conceptId": "product-owner",
+    "consecutiveErrors": 1,
+    "helpLevel": "HINT",
+    "comprehension": "IN_PROGRESS",
+    "history": [
+      {
+        "topicId": "scrum-roles",
+        "conceptId": "product-owner",
+        "questionId": "Q01",
+        "questionType": "INITIAL",
+        "selectedOptionId": "A",
+        "result": "INCORRECT",
+        "strategy": "HINT",
+        "helpLevel": "HINT"
+      }
+    ],
+    "currentQuestion": {
+      "text": "Varios interesados solicitan funcionalidades diferentes. ¿Quién responde por la gestión efectiva del Product Backlog?",
+      "options": {
+        "A": "Scrum Master.",
+        "B": "Developers.",
+        "C": "Product Owner."
+      },
+      "questionType": "REFORMULATION",
+      "difficulty": "MEDIUM",
+      "conceptId": "product-owner",
+      "id": "Q02"
+    }
+  },
+  "stateAfter": {
+    "topicId": "scrum-events",
+    "conceptId": "daily-scrum",
+    "consecutiveErrors": 0,
+    "helpLevel": "NONE",
+    "comprehension": "UNASSESSED",
+    "history": [
+      {
+        "topicId": "scrum-roles",
+        "conceptId": "product-owner",
+        "questionId": "Q01",
+        "questionType": "INITIAL",
+        "selectedOptionId": "A",
+        "result": "INCORRECT",
+        "strategy": "HINT",
+        "helpLevel": "HINT"
+      },
+      {
+        "topicId": "scrum-roles",
+        "conceptId": "product-owner",
+        "questionId": "Q02",
+        "questionType": "REFORMULATION",
+        "selectedOptionId": null,
+        "result": "NOT_APPLICABLE",
+        "strategy": "CHANGE_TOPIC",
+        "helpLevel": "NONE"
+      }
+    ],
+    "currentQuestion": {
+      "text": "Durante el Sprint, Developers necesitan inspeccionar el avance y adaptar su plan. ¿Qué evento les sirve?",
+      "options": {
+        "A": "Sprint Planning.",
+        "B": "Daily Scrum.",
+        "C": "Ningún evento."
+      },
+      "questionType": "INITIAL",
+      "difficulty": "LOW",
+      "conceptId": "daily-scrum",
+      "id": "q-bed72bc1-8707-4e35-a316-0f8bb4891392"
+    }
+  },
+  "corpus": {
+    "id": "scrum-poc-provisional-v1",
+    "sha256": "f696c70c4f344a5689e0d3fe0c00f717811a0d6957abde270e5b4a6144e3a46e",
+    "status": "PROVISIONAL_CONTRASTED_NOT_PO_APPROVED"
+  },
+  "effectiveConfig": {},
+  "passedChecks": null,
+  "applicableChecks": 3,
+  "criticalFailures": null,
+  "evaluationStatus": "PENDING_MANUAL_REVIEW",
+  "notes": ""
+}

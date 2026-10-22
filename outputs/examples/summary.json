@@ -1,0 +1,65 @@
+{
+  "mode": "mock",
+  "runs": [
+    {
+      "scenarioId": "E1",
+      "status": "ok",
+      "route": [
+        "diagnostic_agent",
+        "analyst_agent",
+        "tutor_agent"
+      ],
+      "error": null
+    },
+    {
+      "scenarioId": "E2",
+      "status": "ok",
+      "route": [
+        "diagnostic_agent",
+        "analyst_agent",
+        "tutor_agent"
+      ],
+      "error": null
+    },
+    {
+      "scenarioId": "E3",
+      "status": "ok",
+      "route": [
+        "diagnostic_agent",
+        "analyst_agent",
+        "tutor_agent"
+      ],
+      "error": null
+    },
+    {
+      "scenarioId": "E4",
+      "status": "ok",
+      "route": [
+        "diagnostic_agent",
+        "analyst_agent",
+        "tutor_agent"
+      ],
+      "error": null
+    },
+    {
+      "scenarioId": "E5",
+      "status": "ok",
+      "route": [
+        "analyst_agent",
+        "tutor_agent"
+      ],
+      "error": null
+    },
+    {
+      "scenarioId": "START",
+      "status": "ok",
+      "route": [
+        "tutor_agent"
+      ],
+      "error": null
+    }
+  ],
+  "rubricStatus": "PENDING_MANUAL_REVIEW",
+  "autonomyObservation": "Simulación programada; no permite evaluar autonomía de Claude.",
+  "failedRuns": 0
+}

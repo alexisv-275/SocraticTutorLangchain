@@ -1,0 +1,199 @@
+{
+  "runId": "1ca7f7df-f058-45d2-bbc0-e4332eb8bb39",
+  "architecture": "langchain",
+  "mode": "mock",
+  "model": "scripted-offline",
+  "startedAt": "2026-10-22T03:35:43.046Z",
+  "finishedAt": "2026-10-22T03:35:43.104Z",
+  "latencyMs": 56.64580000000001,
+  "llmCalls": 0,
+  "simulatedModelCalls": 4,
+  "inputTokens": 0,
+  "outputTokens": 0,
+  "totalTokens": 0,
+  "usageIncomplete": false,
+  "technicalRetries": 0,
+  "llmAttempts": [
+    {
+      "callId": "01a161ad-cee4-751d-9c1d-48f6772f389a",
+      "runId": "1ca7f7df-f058-45d2-bbc0-e4332eb8bb39",
+      "roleOrAgent": "diagnostic_agent",
+      "model": "scripted-offline",
+      "startedAt": "2026-10-22T03:35:43.076Z",
+      "finishedAt": "2026-10-22T03:35:43.076Z",
+      "durationMs": 0,
+      "inputTokens": null,
+      "outputTokens": null,
+      "status": "ok"
+    },
+    {
+      "callId": "01a161ad-ceea-709f-816f-01ff5e84303b",
+      "runId": "1ca7f7df-f058-45d2-bbc0-e4332eb8bb39",
+      "roleOrAgent": "diagnostic_agent",
+      "model": "scripted-offline",
+      "startedAt": "2026-10-22T03:35:43.082Z",
+      "finishedAt": "2026-10-22T03:35:43.082Z",
+      "durationMs": 0,
+      "inputTokens": null,
+      "outputTokens": null,
+      "status": "ok"
+    },
+    {
+      "callId": "01a161ad-cef4-7021-8e17-f44e17d4ab0d",
+      "runId": "1ca7f7df-f058-45d2-bbc0-e4332eb8bb39",
+      "roleOrAgent": "analyst_agent",
+      "model": "scripted-offline",
+      "startedAt": "2026-10-22T03:35:43.092Z",
+      "finishedAt": "2026-10-22T03:35:43.092Z",
+      "durationMs": 0,
+      "inputTokens": null,
+      "outputTokens": null,
+      "status": "ok"
+    },
+    {
+      "callId": "01a161ad-cefa-71db-ae1b-32ebea64cd34",
+      "runId": "1ca7f7df-f058-45d2-bbc0-e4332eb8bb39",
+      "roleOrAgent": "tutor_agent",
+      "model": "scripted-offline",
+      "startedAt": "2026-10-22T03:35:43.098Z",
+      "finishedAt": "2026-10-22T03:35:43.098Z",
+      "durationMs": 0,
+      "inputTokens": null,
+      "outputTokens": null,
+      "status": "ok"
+    }
+  ],
+  "handoffs": [
+    {
+      "fromAgent": "diagnostic_agent",
+      "toAgent": "analyst_agent",
+      "reason": "Evaluación objetiva con evidencia del historial.",
+      "time": "2026-10-22T03:35:43.085Z",
+      "accepted": true
+    },
+    {
+      "fromAgent": "analyst_agent",
+      "toAgent": "tutor_agent",
+      "reason": "Aplicar intervención adecuada a la evidencia.",
+      "time": "2026-10-22T03:35:43.095Z",
+      "accepted": true
+    }
+  ],
+  "agentTrace": [
+    {
+      "role": "diagnostic_agent",
+      "activation": 1,
+      "time": "2026-10-22T03:35:43.069Z"
+    },
+    {
+      "role": "analyst_agent",
+      "activation": 2,
+      "time": "2026-10-22T03:35:43.090Z"
+    },
+    {
+      "role": "tutor_agent",
+      "activation": 3,
+      "time": "2026-10-22T03:35:43.096Z"
+    }
+  ],
+  "sessionId": "test-session",
+  "scenarioId": "E1",
+  "status": "ok",
+  "result": "CORRECT",
+  "strategy": "VERIFY",
+  "pedagogicalDecision": {
+    "strategy": "VERIFY",
+    "difficulty": "MEDIUM",
+    "justification": "Intervención coherente con la evidencia y las reglas.",
+    "nextRole": "tutor_agent"
+  },
+  "error": null,
+  "response": {
+    "message": "Veamos cómo aplicar esta idea en otra situación.",
+    "question": {
+      "text": "Un equipo crea una aplicación educativa. ¿Quién responde por ordenar mejoras según su valor?",
+      "options": {
+        "A": "Scrum Master.",
+        "B": "Developers.",
+        "C": "Product Owner."
+      },
+      "questionType": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "conceptId": "product-owner",
+      "id": "q-0b7c1f9e-5319-4ef2-980c-573bb6ecdedf"
+    },
+    "topics": [],
+    "actions": [
+      {
+        "id": "4",
+        "label": "Necesito una pista"
+      },
+      {
+        "id": "5",
+        "label": "Cambiar de tema"
+      }
+    ]
+  },
+  "stateBefore": {
+    "topicId": "scrum-roles",
+    "conceptId": "product-owner",
+    "consecutiveErrors": 0,
+    "helpLevel": "NONE",
+    "comprehension": "UNASSESSED",
+    "history": [],
+    "currentQuestion": {
+      "text": "En Scrum, ¿quién es responsable de maximizar el valor del producto?",
+      "options": {
+        "A": "Developers.",
+        "B": "Product Owner.",
+        "C": "Scrum Master."
+      },
+      "questionType": "INITIAL",
+      "difficulty": "LOW",
+      "conceptId": "product-owner",
+      "id": "Q01"
+    }
+  },
+  "stateAfter": {
+    "topicId": "scrum-roles",
+    "conceptId": "product-owner",
+    "consecutiveErrors": 0,
+    "helpLevel": "NONE",
+    "comprehension": "PENDING_VERIFICATION",
+    "history": [
+      {
+        "topicId": "scrum-roles",
+        "conceptId": "product-owner",
+        "questionId": "Q01",
+        "questionType": "INITIAL",
+        "selectedOptionId": "B",
+        "result": "CORRECT",
+        "strategy": "VERIFY",
+        "helpLevel": "NONE"
+      }
+    ],
+    "currentQuestion": {
+      "text": "Un equipo crea una aplicación educativa. ¿Quién responde por ordenar mejoras según su valor?",
+      "options": {
+        "A": "Scrum Master.",
+        "B": "Developers.",
+        "C": "Product Owner."
+      },
+      "questionType": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "conceptId": "product-owner",
+      "id": "q-0b7c1f9e-5319-4ef2-980c-573bb6ecdedf"
+    }
+  },
+  "corpus": {
+    "id": "scrum-poc-provisional-v1",
+    "sha256": "f696c70c4f344a5689e0d3fe0c00f717811a0d6957abde270e5b4a6144e3a46e",
+    "status": "PROVISIONAL_CONTRASTED_NOT_PO_APPROVED"
+  },
+  "effectiveConfig": {},
+  "passedChecks": null,
+  "applicableChecks": 3,
+  "criticalFailures": null,
+  "evaluationStatus": "PENDING_MANUAL_REVIEW",
+  "notes": ""
+}

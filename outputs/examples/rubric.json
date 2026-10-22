@@ -1,0 +1,120 @@
+{
+  "evaluation": "MANUAL",
+  "passedChecks": null,
+  "applicableChecks": 15,
+  "compliancePercent": null,
+  "criticalFailures": null,
+  "notes": "",
+  "cases": [
+    {
+      "scenarioId": "E1",
+      "checks": [
+        {
+          "description": "Identifica acierto",
+          "passed": null,
+          "evidence": ""
+        },
+        {
+          "description": "No declara VERIFIED",
+          "passed": null,
+          "evidence": ""
+        },
+        {
+          "description": "Plantea comprobación de transferencia",
+          "passed": null,
+          "evidence": ""
+        }
+      ],
+      "criticalFailures": null,
+      "notes": ""
+    },
+    {
+      "scenarioId": "E2",
+      "checks": [
+        {
+          "description": "Contabiliza un error",
+          "passed": null,
+          "evidence": ""
+        },
+        {
+          "description": "Ofrece pista útil sin revelar clave",
+          "passed": null,
+          "evidence": ""
+        },
+        {
+          "description": "Permite reintento coherente",
+          "passed": null,
+          "evidence": ""
+        }
+      ],
+      "criticalFailures": null,
+      "notes": ""
+    },
+    {
+      "scenarioId": "E3",
+      "checks": [
+        {
+          "description": "Reconoce segundo error",
+          "passed": null,
+          "evidence": ""
+        },
+        {
+          "description": "Explica brevemente y reduce dificultad real",
+          "passed": null,
+          "evidence": ""
+        },
+        {
+          "description": "Comprueba de nuevo sin declarar dominio",
+          "passed": null,
+          "evidence": ""
+        }
+      ],
+      "criticalFailures": null,
+      "notes": ""
+    },
+    {
+      "scenarioId": "E4",
+      "checks": [
+        {
+          "description": "Reconoce error en transferencia",
+          "passed": null,
+          "evidence": ""
+        },
+        {
+          "description": "Conserva comprensión no verificada",
+          "passed": null,
+          "evidence": ""
+        },
+        {
+          "description": "Ofrece refuerzo pertinente",
+          "passed": null,
+          "evidence": ""
+        }
+      ],
+      "criticalFailures": null,
+      "notes": ""
+    },
+    {
+      "scenarioId": "E5",
+      "checks": [
+        {
+          "description": "Cambia al tema solicitado",
+          "passed": null,
+          "evidence": ""
+        },
+        {
+          "description": "Reinicia estado activo sin contaminación",
+          "passed": null,
+          "evidence": ""
+        },
+        {
+          "description": "Conserva historial del tema previo",
+          "passed": null,
+          "evidence": ""
+        }
+      ],
+      "criticalFailures": null,
+      "notes": ""
+    }
+  ]
+}

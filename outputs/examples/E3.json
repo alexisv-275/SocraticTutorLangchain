@@ -1,0 +1,220 @@
+{
+  "runId": "c3d512c2-9881-4d17-81eb-2a90e3c1014f",
+  "architecture": "langchain",
+  "mode": "mock",
+  "model": "scripted-offline",
+  "startedAt": "2026-10-22T03:35:43.129Z",
+  "finishedAt": "2026-10-22T03:35:43.145Z",
+  "latencyMs": 15.344900000000052,
+  "llmCalls": 0,
+  "simulatedModelCalls": 4,
+  "inputTokens": 0,
+  "outputTokens": 0,
+  "totalTokens": 0,
+  "usageIncomplete": false,
+  "technicalRetries": 0,
+  "llmAttempts": [
+    {
+      "callId": "01a161ad-cf1d-74f8-8029-eb5996fddcfe",
+      "runId": "c3d512c2-9881-4d17-81eb-2a90e3c1014f",
+      "roleOrAgent": "diagnostic_agent",
+      "model": "scripted-offline",
+      "startedAt": "2026-10-22T03:35:43.133Z",
+      "finishedAt": "2026-10-22T03:35:43.133Z",
+      "durationMs": 0,
+      "inputTokens": null,
+      "outputTokens": null,
+      "status": "ok"
+    },
+    {
+      "callId": "01a161ad-cf1f-7418-8f59-ac8ec52493d6",
+      "runId": "c3d512c2-9881-4d17-81eb-2a90e3c1014f",
+      "roleOrAgent": "diagnostic_agent",
+      "model": "scripted-offline",
+      "startedAt": "2026-10-22T03:35:43.135Z",
+      "finishedAt": "2026-10-22T03:35:43.135Z",
+      "durationMs": 0,
+      "inputTokens": null,
+      "outputTokens": null,
+      "status": "ok"
+    },
+    {
+      "callId": "01a161ad-cf23-741c-91d1-f25735a60ec1",
+      "runId": "c3d512c2-9881-4d17-81eb-2a90e3c1014f",
+      "roleOrAgent": "analyst_agent",
+      "model": "scripted-offline",
+      "startedAt": "2026-10-22T03:35:43.139Z",
+      "finishedAt": "2026-10-22T03:35:43.139Z",
+      "durationMs": 0,
+      "inputTokens": null,
+      "outputTokens": null,
+      "status": "ok"
+    },
+    {
+      "callId": "01a161ad-cf26-717a-9273-6e4124f101c8",
+      "runId": "c3d512c2-9881-4d17-81eb-2a90e3c1014f",
+      "roleOrAgent": "tutor_agent",
+      "model": "scripted-offline",
+      "startedAt": "2026-10-22T03:35:43.142Z",
+      "finishedAt": "2026-10-22T03:35:43.142Z",
+      "durationMs": 0,
+      "inputTokens": null,
+      "outputTokens": null,
+      "status": "ok"
+    }
+  ],
+  "handoffs": [
+    {
+      "fromAgent": "diagnostic_agent",
+      "toAgent": "analyst_agent",
+      "reason": "Evaluación objetiva con evidencia del historial.",
+      "time": "2026-10-22T03:35:43.137Z",
+      "accepted": true
+    },
+    {
+      "fromAgent": "analyst_agent",
+      "toAgent": "tutor_agent",
+      "reason": "Aplicar intervención adecuada a la evidencia.",
+      "time": "2026-10-22T03:35:43.140Z",
+      "accepted": true
+    }
+  ],
+  "agentTrace": [
+    {
+      "role": "diagnostic_agent",
+      "activation": 1,
+      "time": "2026-10-22T03:35:43.131Z"
+    },
+    {
+      "role": "analyst_agent",
+      "activation": 2,
+      "time": "2026-10-22T03:35:43.138Z"
+    },
+    {
+      "role": "tutor_agent",
+      "activation": 3,
+      "time": "2026-10-22T03:35:43.141Z"
+    }
+  ],
+  "sessionId": "test-session",
+  "scenarioId": "E3",
+  "status": "ok",
+  "result": "INCORRECT",
+  "strategy": "SIMPLIFY",
+  "pedagogicalDecision": {
+    "strategy": "SIMPLIFY",
+    "difficulty": "LOW",
+    "justification": "Intervención coherente con la evidencia y las reglas.",
+    "nextRole": "tutor_agent"
+  },
+  "error": null,
+  "response": {
+    "message": "El Product Owner cuida el valor del producto y la ordenación del trabajo. Probemos una situación más sencilla.",
+    "question": {
+      "text": "¿Qué responsabilidad corresponde al Product Owner?",
+      "options": {
+        "A": "Maximizar el valor del producto.",
+        "B": "Crear por sí solo cada incremento.",
+        "C": "Sustituir a Developers."
+      },
+      "questionType": "SIMPLIFIED",
+      "difficulty": "LOW",
+      "conceptId": "product-owner",
+      "id": "q-8b111fa3-420c-4d56-8a14-8b166c318169"
+    },
+    "topics": [],
+    "actions": [
+      {
+        "id": "4",
+        "label": "Necesito una pista"
+      },
+      {
+        "id": "5",
+        "label": "Cambiar de tema"
+      }
+    ]
+  },
+  "stateBefore": {
+    "topicId": "scrum-roles",
+    "conceptId": "product-owner",
+    "consecutiveErrors": 1,
+    "helpLevel": "HINT",
+    "comprehension": "IN_PROGRESS",
+    "history": [
+      {
+        "topicId": "scrum-roles",
+        "conceptId": "product-owner",
+        "questionId": "Q01",
+        "questionType": "INITIAL",
+        "selectedOptionId": "A",
+        "result": "INCORRECT",
+        "strategy": "HINT",
+        "helpLevel": "HINT"
+      }
+    ],
+    "currentQuestion": {
+      "text": "Varios interesados solicitan funcionalidades diferentes. ¿Quién responde por la gestión efectiva del Product Backlog?",
+      "options": {
+        "A": "Scrum Master.",
+        "B": "Developers.",
+        "C": "Product Owner."
+      },
+      "questionType": "REFORMULATION",
+      "difficulty": "MEDIUM",
+      "conceptId": "product-owner",
+      "id": "Q02"
+    }
+  },
+  "stateAfter": {
+    "topicId": "scrum-roles",
+    "conceptId": "product-owner",
+    "consecutiveErrors": 2,
+    "helpLevel": "EXPLANATION",
+    "comprehension": "IN_PROGRESS",
+    "history": [
+      {
+        "topicId": "scrum-roles",
+        "conceptId": "product-owner",
+        "questionId": "Q01",
+        "questionType": "INITIAL",
+        "selectedOptionId": "A",
+        "result": "INCORRECT",
+        "strategy": "HINT",
+        "helpLevel": "HINT"
+      },
+      {
+        "topicId": "scrum-roles",
+        "conceptId": "product-owner",
+        "questionId": "Q02",
+        "questionType": "REFORMULATION",
+        "selectedOptionId": "A",
+        "result": "INCORRECT",
+        "strategy": "SIMPLIFY",
+        "helpLevel": "EXPLANATION"
+      }
+    ],
+    "currentQuestion": {
+      "text": "¿Qué responsabilidad corresponde al Product Owner?",
+      "options": {
+        "A": "Maximizar el valor del producto.",
+        "B": "Crear por sí solo cada incremento.",
+        "C": "Sustituir a Developers."
+      },
+      "questionType": "SIMPLIFIED",
+      "difficulty": "LOW",
+      "conceptId": "product-owner",
+      "id": "q-8b111fa3-420c-4d56-8a14-8b166c318169"
+    }
+  },
+  "corpus": {
+    "id": "scrum-poc-provisional-v1",
+    "sha256": "f696c70c4f344a5689e0d3fe0c00f717811a0d6957abde270e5b4a6144e3a46e",
+    "status": "PROVISIONAL_CONTRASTED_NOT_PO_APPROVED"
+  },
+  "effectiveConfig": {},
+  "passedChecks": null,
+  "applicableChecks": 3,
+  "criticalFailures": null,
+  "evaluationStatus": "PENDING_MANUAL_REVIEW",
+  "notes": ""
+}

@@ -1,0 +1,83 @@
+[
+  {
+    "runId": "1ca7f7df-f058-45d2-bbc0-e4332eb8bb39",
+    "scenarioId": "E1",
+    "fromAgent": "diagnostic_agent",
+    "toAgent": "analyst_agent",
+    "reason": "Evaluación objetiva con evidencia del historial.",
+    "time": "2026-10-22T03:35:43.085Z",
+    "accepted": true
+  },
+  {
+    "runId": "1ca7f7df-f058-45d2-bbc0-e4332eb8bb39",
+    "scenarioId": "E1",
+    "fromAgent": "analyst_agent",
+    "toAgent": "tutor_agent",
+    "reason": "Aplicar intervención adecuada a la evidencia.",
+    "time": "2026-10-22T03:35:43.095Z",
+    "accepted": true
+  },
+  {
+    "runId": "e1505f8e-64ad-4e62-be9f-2079dbb9a2e8",
+    "scenarioId": "E2",
+    "fromAgent": "diagnostic_agent",
+    "toAgent": "analyst_agent",
+    "reason": "Evaluación objetiva con evidencia del historial.",
+    "time": "2026-10-22T03:35:43.118Z",
+    "accepted": true
+  },
+  {
+    "runId": "e1505f8e-64ad-4e62-be9f-2079dbb9a2e8",
+    "scenarioId": "E2",
+    "fromAgent": "analyst_agent",
+    "toAgent": "tutor_agent",
+    "reason": "Aplicar intervención adecuada a la evidencia.",
+    "time": "2026-10-22T03:35:43.122Z",
+    "accepted": true
+  },
+  {
+    "runId": "c3d512c2-9881-4d17-81eb-2a90e3c1014f",
+    "scenarioId": "E3",
+    "fromAgent": "diagnostic_agent",
+    "toAgent": "analyst_agent",
+    "reason": "Evaluación objetiva con evidencia del historial.",
+    "time": "2026-10-22T03:35:43.137Z",
+    "accepted": true
+  },
+  {
+    "runId": "c3d512c2-9881-4d17-81eb-2a90e3c1014f",
+    "scenarioId": "E3",
+    "fromAgent": "analyst_agent",
+    "toAgent": "tutor_agent",
+    "reason": "Aplicar intervención adecuada a la evidencia.",
+    "time": "2026-10-22T03:35:43.140Z",
+    "accepted": true
+  },
+  {
+    "runId": "c138bd49-69a0-4ee6-94cd-74c230058ddf",
+    "scenarioId": "E4",
+    "fromAgent": "diagnostic_agent",
+    "toAgent": "analyst_agent",
+    "reason": "Evaluación objetiva con evidencia del historial.",
+    "time": "2026-10-22T03:35:43.152Z",
+    "accepted": true
+  },
+  {
+    "runId": "c138bd49-69a0-4ee6-94cd-74c230058ddf",
+    "scenarioId": "E4",
+    "fromAgent": "analyst_agent",
+    "toAgent": "tutor_agent",
+    "reason": "Aplicar intervención adecuada a la evidencia.",
+    "time": "2026-10-22T03:35:43.156Z",
+    "accepted": true
+  },
+  {
+    "runId": "f74c43bb-d85b-40c3-95f1-fe503c3a118e",
+    "scenarioId": "E5",
+    "fromAgent": "analyst_agent",
+    "toAgent": "tutor_agent",
+    "reason": "Aplicar intervención adecuada a la evidencia.",
+    "time": "2026-10-22T03:35:43.165Z",
+    "accepted": true
+  }
+]

@@ -1,0 +1,199 @@
+{
+  "runId": "e1505f8e-64ad-4e62-be9f-2079dbb9a2e8",
+  "architecture": "langchain",
+  "mode": "mock",
+  "model": "scripted-offline",
+  "startedAt": "2026-10-22T03:35:43.108Z",
+  "finishedAt": "2026-10-22T03:35:43.128Z",
+  "latencyMs": 20.066100000000006,
+  "llmCalls": 0,
+  "simulatedModelCalls": 4,
+  "inputTokens": 0,
+  "outputTokens": 0,
+  "totalTokens": 0,
+  "usageIncomplete": false,
+  "technicalRetries": 0,
+  "llmAttempts": [
+    {
+      "callId": "01a161ad-cf0b-72ae-9bb5-0a13733f898a",
+      "runId": "e1505f8e-64ad-4e62-be9f-2079dbb9a2e8",
+      "roleOrAgent": "diagnostic_agent",
+      "model": "scripted-offline",
+      "startedAt": "2026-10-22T03:35:43.115Z",
+      "finishedAt": "2026-10-22T03:35:43.115Z",
+      "durationMs": 0,
+      "inputTokens": null,
+      "outputTokens": null,
+      "status": "ok"
+    },
+    {
+      "callId": "01a161ad-cf0d-74d6-a8c3-934f05ce69e0",
+      "runId": "e1505f8e-64ad-4e62-be9f-2079dbb9a2e8",
+      "roleOrAgent": "diagnostic_agent",
+      "model": "scripted-offline",
+      "startedAt": "2026-10-22T03:35:43.117Z",
+      "finishedAt": "2026-10-22T03:35:43.117Z",
+      "durationMs": 0,
+      "inputTokens": null,
+      "outputTokens": null,
+      "status": "ok"
+    },
+    {
+      "callId": "01a161ad-cf10-7591-9fdd-3305fbbc68f8",
+      "runId": "e1505f8e-64ad-4e62-be9f-2079dbb9a2e8",
+      "roleOrAgent": "analyst_agent",
+      "model": "scripted-offline",
+      "startedAt": "2026-10-22T03:35:43.120Z",
+      "finishedAt": "2026-10-22T03:35:43.120Z",
+      "durationMs": 0,
+      "inputTokens": null,
+      "outputTokens": null,
+      "status": "ok"
+    },
+    {
+      "callId": "01a161ad-cf15-74f2-8adb-e16a95cfdb63",
+      "runId": "e1505f8e-64ad-4e62-be9f-2079dbb9a2e8",
+      "roleOrAgent": "tutor_agent",
+      "model": "scripted-offline",
+      "startedAt": "2026-10-22T03:35:43.125Z",
+      "finishedAt": "2026-10-22T03:35:43.125Z",
+      "durationMs": 0,
+      "inputTokens": null,
+      "outputTokens": null,
+      "status": "ok"
+    }
+  ],
+  "handoffs": [
+    {
+      "fromAgent": "diagnostic_agent",
+      "toAgent": "analyst_agent",
+      "reason": "Evaluación objetiva con evidencia del historial.",
+      "time": "2026-10-22T03:35:43.118Z",
+      "accepted": true
+    },
+    {
+      "fromAgent": "analyst_agent",
+      "toAgent": "tutor_agent",
+      "reason": "Aplicar intervención adecuada a la evidencia.",
+      "time": "2026-10-22T03:35:43.122Z",
+      "accepted": true
+    }
+  ],
+  "agentTrace": [
+    {
+      "role": "diagnostic_agent",
+      "activation": 1,
+      "time": "2026-10-22T03:35:43.112Z"
+    },
+    {
+      "role": "analyst_agent",
+      "activation": 2,
+      "time": "2026-10-22T03:35:43.119Z"
+    },
+    {
+      "role": "tutor_agent",
+      "activation": 3,
+      "time": "2026-10-22T03:35:43.123Z"
+    }
+  ],
+  "sessionId": "test-session",
+  "scenarioId": "E2",
+  "status": "ok",
+  "result": "INCORRECT",
+  "strategy": "HINT",
+  "pedagogicalDecision": {
+    "strategy": "HINT",
+    "difficulty": "MEDIUM",
+    "justification": "Intervención coherente con la evidencia y las reglas.",
+    "nextRole": "tutor_agent"
+  },
+  "error": null,
+  "response": {
+    "message": "Piensa en la responsabilidad vinculada al valor, no en quién facilita el proceso. Inténtalo otra vez.",
+    "question": {
+      "text": "En Scrum, ¿quién es responsable de maximizar el valor del producto?",
+      "options": {
+        "A": "Developers.",
+        "B": "Product Owner.",
+        "C": "Scrum Master."
+      },
+      "questionType": "INITIAL",
+      "difficulty": "LOW",
+      "conceptId": "product-owner",
+      "id": "Q01"
+    },
+    "topics": [],
+    "actions": [
+      {
+        "id": "4",
+        "label": "Necesito una pista"
+      },
+      {
+        "id": "5",
+        "label": "Cambiar de tema"
+      }
+    ]
+  },
+  "stateBefore": {
+    "topicId": "scrum-roles",
+    "conceptId": "product-owner",
+    "consecutiveErrors": 0,
+    "helpLevel": "NONE",
+    "comprehension": "UNASSESSED",
+    "history": [],
+    "currentQuestion": {
+      "text": "En Scrum, ¿quién es responsable de maximizar el valor del producto?",
+      "options": {
+        "A": "Developers.",
+        "B": "Product Owner.",
+        "C": "Scrum Master."
+      },
+      "questionType": "INITIAL",
+      "difficulty": "LOW",
+      "conceptId": "product-owner",
+      "id": "Q01"
+    }
+  },
+  "stateAfter": {
+    "topicId": "scrum-roles",
+    "conceptId": "product-owner",
+    "consecutiveErrors": 1,
+    "helpLevel": "HINT",
+    "comprehension": "IN_PROGRESS",
+    "history": [
+      {
+        "topicId": "scrum-roles",
+        "conceptId": "product-owner",
+        "questionId": "Q01",
+        "questionType": "INITIAL",
+        "selectedOptionId": "A",
+        "result": "INCORRECT",
+        "strategy": "HINT",
+        "helpLevel": "HINT"
+      }
+    ],
+    "currentQuestion": {
+      "text": "En Scrum, ¿quién es responsable de maximizar el valor del producto?",
+      "options": {
+        "A": "Developers.",
+        "B": "Product Owner.",
+        "C": "Scrum Master."
+      },
+      "questionType": "INITIAL",
+      "difficulty": "LOW",
+      "conceptId": "product-owner",
+      "id": "Q01"
+    }
+  },
+  "corpus": {
+    "id": "scrum-poc-provisional-v1",
+    "sha256": "f696c70c4f344a5689e0d3fe0c00f717811a0d6957abde270e5b4a6144e3a46e",
+    "status": "PROVISIONAL_CONTRASTED_NOT_PO_APPROVED"
+  },
+  "effectiveConfig": {},
+  "passedChecks": null,
+  "applicableChecks": 3,
+  "criticalFailures": null,
+  "evaluationStatus": "PENDING_MANUAL_REVIEW",
+  "notes": ""
+}
