@@ -1,4 +1,3 @@
-export const defaultPracticeTopic = 'La hipótesis del Intervalo Cero';
 export const fundamentalsConcept = 'fundamentos';
 export const questionFocus = [
   'Reconoce la situación',

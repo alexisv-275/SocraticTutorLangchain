@@ -104,11 +104,13 @@ const server = createServer(async (request, response) => {
       json(response, 200, { indexed });
     } else if (path === '/api/start') {
       const input = StartInput.safeParse(body);
-      ensure(input.success, 'INVALID_ACTION', 'Escribe un tema de hasta 160 caracteres.');
+      ensure(input.success, 'INVALID_ACTION', 'Escribe un tema de hasta 160 caracteres o selecciona un archivo.');
       const tutor = getPractice();
       const uploaded = input.data.uploadId ? await getMaterials().status(input.data.uploadId) : undefined;
       ensure(!uploaded || uploaded.indexed, 'MATERIAL_PENDING', 'El archivo todavía se está indexando.');
-      json(response, 201, await tutor.start(input.data.topic ?? uploaded?.material.topic, uploaded?.material.source));
+      const topic = input.data.topic ?? uploaded?.material.topic;
+      ensure(topic, 'INVALID_ACTION', 'Escribe un tema de estudio.');
+      json(response, 201, await tutor.start(topic, uploaded?.material.source));
     } else {
       const input = AnswerInput.safeParse(body);
       ensure(input.success, 'INVALID_ACTION', 'Selecciona una opción válida.');

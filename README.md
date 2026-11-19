@@ -6,7 +6,7 @@ Implementación guiada por [la guía técnica](thinkagora-poc-langchain-guia-imp
 
 ## Pantalla web de Fundamentos
 
-Elige un PDF con texto seleccionable o un archivo Markdown de hasta 10 MiB y pulsa **Start**. El backend lo guarda en `material-academico` del mismo Supabase que usa n8n y espera su indexación. Luego abre **Aprender desde cero** y usa solo los fragmentos del archivo para las seis preguntas de **Fundamentos**. Puedes editar el tema. Si dejas el selector vacío, el tutor busca en la biblioteca por tema.
+Escribe un tema de estudio y pulsa **Start** para practicar con la biblioteca indexada. También puedes seleccionar un PDF con texto seleccionable o un archivo Markdown de hasta 10 MiB. Al seleccionarlo, la pantalla propone el nombre del archivo como tema editable. Al pulsar **Start**, el backend guarda el archivo en `material-academico` del mismo Supabase que usa n8n, espera su indexación y usa solo sus fragmentos para las seis preguntas de **Fundamentos** en **Aprender desde cero**.
 
 1. Instala las dependencias con `npm.cmd ci` si estás en un clon nuevo.
 2. Copia `.env.example` a `.env` y completa `ANTHROPIC_API_KEY`, `VOYAGEAI_API_KEY` y `SUPABASE_SECRET_KEY` en el servidor. `SUPABASE_URL` ya apunta a BD-ThinkAgora.

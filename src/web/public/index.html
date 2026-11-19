@@ -15,7 +15,7 @@
       <p class="book"><span class="book-icon" aria-hidden="true"></span> Biblioteca</p>
       <p class="side-label">Tema</p>
       <ul class="topics">
-        <li id="source-title">La hipótesis del Intervalo Cero</li>
+        <li id="source-title">Por elegir</li>
       </ul>
       <p class="side-label">Sesión</p>
       <p class="session-label">Aprender desde cero</p>
@@ -54,13 +54,13 @@
 
       <section class="answer-area" aria-labelledby="answer-heading">
         <h3 id="answer-heading">Práctica de Fundamentos</h3>
-        <p id="intro">Elige un archivo y pulsa Start para practicar con ese material.</p>
+        <p id="intro">Escribe un tema de la biblioteca o selecciona un archivo. Luego pulsa Start.</p>
         <div id="topic-field" class="topic-field">
-          <label for="practice-file">Material de estudio</label>
-          <input id="practice-file" type="file" accept=".pdf,.md,application/pdf,text/markdown" aria-describedby="file-help">
-          <small id="file-help">PDF con texto seleccionable o Markdown (.md), hasta 10 MB. Sin archivo, se consulta la biblioteca por tema.</small>
           <label for="practice-topic">Tema de estudio</label>
-          <input id="practice-topic" maxlength="160" value="La hipótesis del Intervalo Cero">
+          <input id="practice-topic" maxlength="160" placeholder="Escribe un tema">
+          <label for="practice-file">Material de estudio (opcional)</label>
+          <input id="practice-file" type="file" accept=".pdf,.md,application/pdf,text/markdown" aria-describedby="file-help">
+          <small id="file-help">PDF con texto seleccionable o Markdown (.md), hasta 10 MB.</small>
         </div>
         <p id="status" role="status" hidden></p>
         <p id="error" role="alert" hidden></p>
@@ -68,7 +68,7 @@
         <div id="feedback" class="feedback" hidden></div>
         <div class="actions">
           <button id="previous" type="button" hidden>← Anterior</button>
-          <button id="primary" type="button">Start</button>
+          <button id="primary" type="button" disabled>Start</button>
         </div>
       </section>
     </main>

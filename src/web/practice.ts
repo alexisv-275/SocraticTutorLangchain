@@ -1,7 +1,7 @@
 import { randomUUID } from 'node:crypto';
 import type { BaseChatModel } from '@langchain/core/language_models/chat_models';
 import { z } from 'zod';
-import { defaultPracticeTopic, questionFocus, type GroundedQuestion, type PracticeContext } from '../academic/fundamentals.js';
+import { questionFocus, type GroundedQuestion, type PracticeContext } from '../academic/fundamentals.js';
 import type { RetrieveLibrary } from '../academic/retrieve-library.js';
 import { LIMITS } from '../config/limits.js';
 import { PracticeOptionId, publicResponse, type Question, type TutorAction, type StudySession } from '../domain/contracts.js';
@@ -17,7 +17,7 @@ export const AnswerInput = z.object({
 }).strict();
 export const StartInput = z.object({
   topic: z.string().trim().min(1).max(160).optional(), uploadId: z.uuid().optional(),
-}).strict();
+}).strict().refine(input => input.topic !== undefined || input.uploadId !== undefined);
 
 type Item = { question: Question; evidence: GroundedQuestion };
 type Session = { topic: string; source?: string; index: number; item: Item | null; busy: boolean; expires: number };
@@ -66,7 +66,7 @@ export function createPractice(model: BaseChatModel, retrieve: RetrieveLibrary, 
   }
 
   return {
-    async start(topic = defaultPracticeTopic, source?: string) {
+    async start(topic: string, source?: string) {
       const now = Date.now();
       for (const [id, session] of sessions) if (!session.busy && session.expires <= now) sessions.delete(id);
       ensure(sessions.size < 100, 'BUSY', 'Hay demasiadas prácticas abiertas. Intenta más tarde.');

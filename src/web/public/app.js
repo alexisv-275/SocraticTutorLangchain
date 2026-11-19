@@ -25,7 +25,7 @@ function render() {
   ui['practice-file'].disabled = busy;
   const topic = ui['practice-topic'].value.trim();
   const hasFile = Boolean(ui['practice-file'].files.length);
-  ui['source-title'].textContent = turn?.topic ?? (topic || 'Material de estudio');
+  ui['source-title'].textContent = turn?.topic ?? (topic || 'Por elegir');
   ui.options.hidden = !turn;
   ui.progress.hidden = !turn;
   ui['source-reference'].hidden = !turn?.review;
