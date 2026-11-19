@@ -12,11 +12,23 @@ import { ensure } from '../domain/errors.js';
 import type { MetricsCollector } from '../infrastructure/metrics.js';
 import type { AgentRole, GraphTurnState } from './state.js';
 import type { TurnRuntime } from './handoffs.js';
+import type { RetrieveLibrary } from '../academic/retrieve-library.js';
 
 const GraphState = Annotation.Root({ turn: Annotation<GraphTurnState>() });
 
 export function agentContext(s: GraphTurnState, role: AgentRole) {
   const session = s.sessionSnapshot;
+  if (s.practice) {
+    const previous = session.currentQuestion;
+    return {
+      action: s.action,
+      previousQuestion: previous ? { text: previous.text, options: previous.options } : null,
+      diagnosis: s.diagnosis,
+      strategyDecision: s.strategyDecision,
+      requiredStrategy: requiredStrategy(session, s.action, s.practice),
+      academicData: s.practice,
+    };
+  }
   const topicId = s.action?.action === 'CHANGE_TOPIC' ? s.action.targetTopicId : session.topicId;
   // Al cambiar tema no arrastrar preguntas del tema anterior al contenido del Tutor.
   const changing = s.action?.action === 'CHANGE_TOPIC';
@@ -33,8 +45,8 @@ export function agentContext(s: GraphTurnState, role: AgentRole) {
     academicData: getContext(topicId) };
 }
 
-export function createStudyGraph(model: BaseChatModel, initial: GraphTurnState, metrics: MetricsCollector) {
-  const runtime: TurnRuntime = { current: initial, checkedAnswer: false, metrics };
+export function createStudyGraph(model: BaseChatModel, initial: GraphTurnState, metrics: MetricsCollector, retrieve?: RetrieveLibrary) {
+  const runtime: TurnRuntime = { current: initial, checkedAnswer: false, metrics, retrieve };
   const agents = { diagnostic_agent: createDiagnosticAgent(model, runtime), analyst_agent: createAnalystAgent(model, runtime), tutor_agent: createTutorAgent(model, runtime) };
   const node = (role: AgentRole) => async (state: typeof GraphState.State, config: RunnableConfig) => {
     ensure(state.turn.agentActivationCount < LIMITS.agentActivations, 'ACTIVATION_BUDGET', 'Se agotaron las activaciones.');

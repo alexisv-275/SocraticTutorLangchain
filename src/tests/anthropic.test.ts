@@ -33,11 +33,28 @@ test('ChatAnthropic serializa tres agentes y contabiliza todo el uso sin red', a
   const result = await createStudyGraph(createClaudeModel(config, fakeFetch), s, metrics).invoke({ turn: s });
   assert.equal(result.turn.finished, true);
   assert.equal(requests.length, 4);
-  assert(requests.every(r => r.max_tokens === 2048 && r.temperature === undefined));
+  assert(requests.every(r => r.max_tokens === 2048 && r.temperature === undefined && r.output_config === undefined));
   const report = metrics.finish();
   assert.equal(report.llmCalls, 4); assert.equal(report.inputTokens, 400); assert.equal(report.outputTokens, 120);
   assert.equal(report.totalTokens, 520); assert.equal(report.usageIncomplete, false);
   assert.doesNotMatch(JSON.stringify(publicConfig(config)), /offline-test-key/);
+});
+
+test('Anthropic recibe el esfuerzo bajo sin activar el razonamiento extendido', async () => {
+  const config = readConfig({ ANTHROPIC_API_KEY: 'offline-test-key', ANTHROPIC_EFFORT: 'low' });
+  let captured: Record<string, unknown> | undefined;
+  const model = createClaudeModel(config, async (_url, init) => {
+    captured = JSON.parse(String(init?.body));
+    return Response.json({
+      id: 'msg_effort', type: 'message', role: 'assistant', model: config.ANTHROPIC_MODEL,
+      content: [{ type: 'text', text: 'Respuesta de prueba.' }], stop_reason: 'end_turn',
+      stop_sequence: null, usage: { input_tokens: 10, output_tokens: 5 },
+    });
+  });
+  await model.invoke('Prueba de configuración');
+  assert.deepEqual(captured?.output_config, { effort: 'low' });
+  assert.equal(captured?.thinking, undefined);
+  assert.equal(publicConfig(config).effort, 'low');
 });
 test('configuración ausente o inválida falla sin mostrar secretos', () => {
   assert.throws(() => readConfig({}), /ANTHROPIC_API_KEY/);

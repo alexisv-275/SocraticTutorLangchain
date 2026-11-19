@@ -8,6 +8,7 @@
   },
   "scripts": {
     "dev": "tsx src/cli/demo.ts",
+    "web": "tsx src/web/server.ts",
     "scenarios": "tsx src/cli/scenarios.ts",
     "test": "tsx --test src/tests/*.test.ts",
     "typecheck": "tsc --noEmit"

@@ -6,6 +6,7 @@ export function createClaudeModel(config: AppConfig, fetchOverride?: typeof fetc
   return new ChatAnthropic({
     apiKey: config.ANTHROPIC_API_KEY, model: config.ANTHROPIC_MODEL,
     maxTokens: config.MAX_OUTPUT_TOKENS, maxRetries: 0, streaming: false,
+    ...(config.ANTHROPIC_EFFORT ? { outputConfig: { effort: config.ANTHROPIC_EFFORT } } : {}),
     clientOptions: { maxRetries: 0, timeout: config.MODEL_TIMEOUT_MS, ...(fetchOverride ? { fetch: fetchOverride } : {}) },
   });
 }

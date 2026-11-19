@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ThinkAgora · Fundamentos</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" aria-label="Cuaderno">
+      <div class="brand"><span class="brand-mark" aria-hidden="true">Ⅲ</span> ThinkAgora</div>
+      <p class="side-label">Cuaderno</p>
+      <p class="book"><span class="book-icon" aria-hidden="true"></span> Biblioteca</p>
+      <p class="side-label">Tema</p>
+      <ul class="topics">
+        <li id="source-title">La hipótesis del Intervalo Cero</li>
+      </ul>
+      <p class="side-label">Sesión</p>
+      <p class="session-label">Aprender desde cero</p>
+    </aside>
+
+    <main class="workspace">
+      <header class="topbar">
+        <p class="breadcrumb"><span>Biblioteca</span><span aria-hidden="true">›</span><strong>Diálogo · Aprender desde cero</strong></p>
+        <div class="profile"><span aria-hidden="true">E</span> Estudiante</div>
+      </header>
+
+      <ol class="stages" aria-label="Etapas del diálogo">
+        <li aria-current="step"><span>1</span>Fundamentos</li>
+        <li><span>2</span>Comprobación</li>
+        <li><span>3</span>Contrastar</li>
+        <li><span>4</span>Consecuencias</li>
+        <li><span>5</span>Resumen</li>
+      </ol>
+
+      <section class="question-area" aria-labelledby="question-heading">
+        <div class="question-card">
+          <div class="question-header">
+            <div class="stage-name">
+              <span class="tutor-icon" aria-hidden="true">
+                <svg viewBox="0 0 36 36" fill="none"><path d="M8 32c1.4-6 5.7-8 10-8s8.6 2 10 8M11.8 15c0-6 2.6-9.5 6.2-9.5S24.2 9 24.2 15v2.5c0 4.4-3 7-6.2 7s-6.2-2.6-6.2-7V15Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M9 17v-2.8a9 9 0 1 1 18 0V17m-15-2h3m6 0h3m-7 5h2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              </span>
+              <h1>Fundamentos</h1>
+            </div>
+            <div class="progress" id="progress" hidden><span id="progress-text"></span><span class="progress-bars" aria-hidden="true"></span></div>
+          </div>
+          <p class="prompt-note"><span aria-hidden="true">ⓘ</span><span id="focus">Reconoce la situación, explica la idea inicial y detecta supuestos básicos.</span></p>
+          <h2 id="question-heading" tabindex="-1">Empieza por la primera idea.</h2>
+          <p id="source-reference" class="source-reference" hidden></p>
+        </div>
+      </section>
+
+      <section class="answer-area" aria-labelledby="answer-heading">
+        <h3 id="answer-heading">Práctica de Fundamentos</h3>
+        <p id="intro">Elige un archivo y pulsa Start para practicar con ese material.</p>
+        <div id="topic-field" class="topic-field">
+          <label for="practice-file">Material de estudio</label>
+          <input id="practice-file" type="file" accept=".pdf,.md,application/pdf,text/markdown" aria-describedby="file-help">
+          <small id="file-help">PDF con texto seleccionable o Markdown (.md), hasta 10 MB. Sin archivo, se consulta la biblioteca por tema.</small>
+          <label for="practice-topic">Tema de estudio</label>
+          <input id="practice-topic" maxlength="160" value="La hipótesis del Intervalo Cero">
+        </div>
+        <p id="status" role="status" hidden></p>
+        <p id="error" role="alert" hidden></p>
+        <div id="options" class="options" role="group" aria-label="Opciones de respuesta" hidden></div>
+        <div id="feedback" class="feedback" hidden></div>
+        <div class="actions">
+          <button id="previous" type="button" hidden>← Anterior</button>
+          <button id="primary" type="button">Start</button>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

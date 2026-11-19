@@ -8,8 +8,12 @@ import { ensure, TurnError } from '../domain/errors.js';
 import { LIMITS } from '../config/limits.js';
 import type { MetricsCollector } from '../infrastructure/metrics.js';
 import type { AgentRole, GraphTurnState } from './state.js';
+import type { RetrieveLibrary } from '../academic/retrieve-library.js';
 
-export type TurnRuntime = { current: GraphTurnState; checkedAnswer: boolean; metrics: MetricsCollector };
+export type TurnRuntime = {
+  current: GraphTurnState; checkedAnswer: boolean; metrics: MetricsCollector;
+  retrieve?: RetrieveLibrary; searches?: number;
+};
 const reasonSchema = z.string().trim().min(12).max(400);
 export const toolSchemas = {
   checkAnswer: z.object({}).strict(),
@@ -18,6 +22,8 @@ export const toolSchemas = {
   requestRediagnosis: z.object({ reason: reasonSchema }).strict(),
   requestStrategyClarification: z.object({ reason: reasonSchema }).strict(),
   submitIntervention: z.object({ intervention: TutorGenerationSchema }).strict(),
+  searchLibrary: z.object({ query: z.string().trim().min(5).max(350) }).strict(),
+  reportMissingEvidence: z.object({}).strict(),
 };
 const allowed: Record<AgentRole, AgentRole[]> = {
   diagnostic_agent: ['analyst_agent'], analyst_agent: ['diagnostic_agent', 'tutor_agent'], tutor_agent: ['analyst_agent'],
@@ -55,7 +61,7 @@ export function diagnosticTools(runtime: TurnRuntime) {
     tool(({ diagnosis, reason }, config: ToolRuntime) => {
       ensure(runtime.checkedAnswer, 'UNCHECKED_ANSWER', 'Debes llamar checkAnswer antes de diagnosticar.');
       const s = runtime.current;
-      const checked = validateDiagnosis(s.sessionSnapshot, s.action, diagnosis);
+      const checked = validateDiagnosis(s.sessionSnapshot, s.action, diagnosis, s.practice);
       return transfer(runtime, 'analyst_agent', reason, { diagnosis: checked }, config);
     }, { name: 'handoffToAnalyst', description: 'Entrega el diagnóstico validado y cede control al Analista.', schema: toolSchemas.handoffToAnalyst }),
   ];
@@ -64,7 +70,7 @@ export function analystTools(runtime: TurnRuntime) {
   return [
     tool(({ strategyDecision, reason }, config: ToolRuntime) => {
       const s = runtime.current;
-      const checked = validateStrategy(s.sessionSnapshot, s.action, strategyDecision);
+      const checked = validateStrategy(s.sessionSnapshot, s.action, strategyDecision, s.practice);
       return transfer(runtime, 'tutor_agent', reason, { strategyDecision: checked }, config);
     }, { name: 'handoffToTutor', description: 'Propone una estrategia pedagógica y delega su ejecución al Tutor.', schema: toolSchemas.handoffToTutor }),
     tool(({ reason }, config: ToolRuntime) => transfer(runtime, 'diagnostic_agent', reason, { diagnosis: undefined }, config),
@@ -72,11 +78,29 @@ export function analystTools(runtime: TurnRuntime) {
   ];
 }
 export function tutorTools(runtime: TurnRuntime) {
+  const retrieve = runtime.retrieve;
+  const library = retrieve && runtime.current.practice?.next ? [
+    tool(async ({ query }) => {
+      const practice = runtime.current.practice;
+      ensure(practice?.next && (runtime.searches ?? 0) < 2, 'RAG_EMPTY', 'No se encontró material suficiente para ese tema.');
+      runtime.searches = (runtime.searches ?? 0) + 1;
+      const found = await retrieve(query);
+      const chunks = [...practice.next.excerpts, ...found];
+      const excerpts = [...new Map(chunks.map(chunk => [JSON.stringify([chunk.source, chunk.chunk_position]), chunk])).values()];
+      runtime.current = { ...runtime.current, practice: { ...practice, next: { ...practice.next, excerpts } } };
+      return found;
+    }, { name: 'searchLibrary', description: 'Busca fragmentos en la biblioteca semántica a partir de una consulta del tema.', schema: toolSchemas.searchLibrary }),
+    tool(() => {
+      ensure(runtime.searches, 'RAG_EMPTY', 'No se encontró material suficiente para ese tema.');
+      throw new TurnError('RAG_EMPTY', 'No se encontró material indexado que permita formular una pregunta sobre ese tema.');
+    }, { name: 'reportMissingEvidence', description: 'Detiene el turno si la búsqueda no aportó evidencia pertinente.', schema: toolSchemas.reportMissingEvidence }),
+  ] : [];
   return [
+    ...library,
     tool(({ intervention }) => {
       const s = runtime.current;
       ensure(s.strategyDecision, 'MISSING_STRATEGY', 'Falta estrategia.');
-      const generation = validateGeneration(s.sessionSnapshot, s.action, s.strategyDecision, intervention);
+      const generation = validateGeneration(s.sessionSnapshot, s.action, s.strategyDecision, intervention, s.practice);
       return new Command({ graph: Command.PARENT, goto: END, update: { turn: { ...s, tutorGeneration: generation, finished: true } } });
     }, { name: 'submitIntervention', description: 'Entrega la única intervención pública del turno y termina la ejecución.', schema: toolSchemas.submitIntervention }),
     tool(({ reason }, config: ToolRuntime) => transfer(runtime, 'analyst_agent', reason, {}, config),

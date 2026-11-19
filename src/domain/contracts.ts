@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
 export const OptionId = z.enum(['A', 'B', 'C']);
+export const PracticeOptionId = z.enum(['A', 'B', 'C', 'D']);
 export const Difficulty = z.enum(['LOW', 'MEDIUM', 'HIGH']);
 export const QuestionType = z.enum(['INITIAL', 'REFORMULATION', 'TRANSFER', 'SIMPLIFIED']);
 export const HelpLevel = z.enum(['NONE', 'HINT', 'EXPLANATION']);
@@ -12,10 +13,16 @@ export const StudentActionSchema = z.discriminatedUnion('action', [
   z.object({ action: z.literal('CHANGE_TOPIC'), targetTopicId: shortText }).strict(),
 ]);
 export type StudentAction = z.infer<typeof StudentActionSchema>;
-export const OptionsSchema = z.object({ A: shortText, B: shortText, C: shortText }).strict()
-  .refine(o => new Set(Object.values(o).map(v => v.toLowerCase())).size === 3, 'Las opciones deben ser distintas');
+export type TutorAction = StudentAction | {
+  action: 'ANSWER'; questionId: string; selectedOptionId: 'D';
+};
+export const OptionsSchema = z.object({ A: shortText, B: shortText, C: shortText, D: shortText.optional() }).strict()
+  .refine(o => {
+    const options = Object.values(o).filter((value): value is string => value !== undefined);
+    return new Set(options.map(value => value.toLowerCase())).size === options.length;
+  }, 'Las opciones deben ser distintas');
 export const GeneratedQuestionSchema = z.object({
-  text: shortText, options: OptionsSchema, correctOptionId: OptionId,
+  text: shortText, options: OptionsSchema, correctOptionId: PracticeOptionId,
   privateRationale: shortText, questionType: QuestionType, difficulty: Difficulty,
   conceptId: shortText,
 }).strict();

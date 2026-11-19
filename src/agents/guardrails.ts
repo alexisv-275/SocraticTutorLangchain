@@ -48,7 +48,7 @@ export function guardrails(runtime: TurnRuntime) {
           rejectionCode: error instanceof TurnError ? error.code : 'INVALID_HANDOFF',
           ...(error instanceof TurnError && error.code === 'INVALID_STRATEGY' ? {
             strategyValidation: {
-              expected: requiredStrategy(runtime.current.sessionSnapshot, runtime.current.action),
+            expected: requiredStrategy(runtime.current.sessionSnapshot, runtime.current.action, runtime.current.practice),
               received: String(request.toolCall.args.strategyDecision?.strategy),
               difficulty: String(request.toolCall.args.strategyDecision?.difficulty),
               rule: error.message,

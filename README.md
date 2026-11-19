@@ -4,6 +4,18 @@ Tutor socrático de consola en español. Tres agentes Claude (`diagnostic_agent`
 
 Implementación guiada por [la guía técnica](thinkagora-poc-langchain-guia-implementacion.md) y [el contrato pedagógico v0.3](thinkagora-poc-contrato-pedagogico-y-pruebas.md). El [registro por hitos](docs/implementation.md) documenta verificación y pendientes.
 
+## Pantalla web de Fundamentos
+
+Elige un PDF con texto seleccionable o un archivo Markdown de hasta 10 MiB y pulsa **Start**. El backend lo guarda en `material-academico` del mismo Supabase que usa n8n y espera su indexación. Luego abre **Aprender desde cero** y usa solo los fragmentos del archivo para las seis preguntas de **Fundamentos**. Puedes editar el tema. Si dejas el selector vacío, el tutor busca en la biblioteca por tema.
+
+1. Instala las dependencias con `npm.cmd ci` si estás en un clon nuevo.
+2. Copia `.env.example` a `.env` y completa `ANTHROPIC_API_KEY`, `VOYAGEAI_API_KEY` y `SUPABASE_SECRET_KEY` en el servidor. `SUPABASE_URL` ya apunta a BD-ThinkAgora.
+3. Ejecuta `npm.cmd run web` y abre [ThinkAgora en localhost](http://localhost:3100).
+
+Para procesar archivos nuevos, mantén activo el flujo de n8n y su túnel hacia el webhook configurado en Supabase. Si la pantalla agota la espera, vuelve a pulsar **Start** para consultar la carga pendiente. Si restauras el entorno en otro proyecto Supabase, instala el esquema de ingesta y aplica [buscar-biblioteca.sql](infra/buscar-biblioteca.sql) y [material-de-sesion.sql](infra/material-de-sesion.sql). El backend de la PoC de consola sigue disponible con `npm.cmd run dev`.
+
+La pantalla web usa esfuerzo `low` con Claude Sonnet 4.6. Para cambiarlo, define `ANTHROPIC_EFFORT` en `.env` con `low`, `medium` o `high` y reinicia el servidor. Si defines esa variable, también se aplica a las ejecuciones de consola.
+
 ## Comenzar
 
 Requisito: Node.js 22 o posterior (verificado con Node 24). Las dependencias ya están instaladas en este workspace; en un clon nuevo usa `npm ci`.

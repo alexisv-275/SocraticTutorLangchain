@@ -2,7 +2,7 @@ import { randomUUID } from 'node:crypto';
 import type { BaseChatModel } from '@langchain/core/language_models/chat_models';
 import { corpus, corpusHash } from '../academic/corpus.js';
 import { LIMITS } from '../config/limits.js';
-import { StudentActionSchema, StudySessionSchema, publicResponse, type StudentAction, type StudySession } from '../domain/contracts.js';
+import { OptionId, StudentActionSchema, StudySessionSchema, publicResponse, type StudentAction, type StudySession } from '../domain/contracts.js';
 import { ensure, TurnError } from '../domain/errors.js';
 import { checkAnswer, hasTransferEvidence, validateAction, validateDiagnosis, validateGeneration, validateStrategy } from '../domain/policy.js';
 import { emptySession } from '../fixtures/scenarios.js';
@@ -124,7 +124,7 @@ export class TurnCoordinator {
     }
     if (action) next.history.push({ topicId: previous.topicId, conceptId: previous.conceptId,
       questionId: previous.currentQuestion?.id ?? null, questionType: previous.currentQuestion?.questionType ?? null,
-      selectedOptionId: action.action === 'ANSWER' ? action.selectedOptionId : null,
+      selectedOptionId: action.action === 'ANSWER' ? OptionId.parse(action.selectedOptionId) : null,
       result, strategy: decision.strategy, helpLevel: next.helpLevel });
     return StudySessionSchema.parse(next);
   }
